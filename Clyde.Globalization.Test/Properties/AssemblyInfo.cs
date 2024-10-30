@@ -7,7 +7,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("NVNRepos")]
 [assembly: AssemblyProduct("Clyde.Globalization.Test")]
-[assembly: AssemblyCopyright("CC BY-NC")]
+[assembly: AssemblyCopyright("CCC BY-NC 4.0")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

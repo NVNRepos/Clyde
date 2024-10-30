@@ -12,7 +12,7 @@ using System.Windows;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("NVNRepos")]
 [assembly: AssemblyProduct("Clyde")]
-[assembly: AssemblyCopyright("CC BY-NC")]
+[assembly: AssemblyCopyright("CC BY-NC 4.0")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
