@@ -1,0 +1,130 @@
+﻿<Window x:Class="Clyde.App.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Clyde.App"
+        xmlns:control="clr-namespace:Clyde.App.Controls"
+        xmlns:text="clr-namespace:Clyde.App.Resources"
+        xmlns:vm="clr-namespace:Clyde.App.ViewModels"
+        xmlns:tb="clr-namespace:H.NotifyIcon;assembly=H.NotifyIcon.Wpf"
+        mc:Ignorable="d"
+        Loaded="OnLoad"
+        Height="450" Width="300"
+        MaxHeight="450" MaxWidth="300"
+        Title="{x:Static text:Language.ApplicationName}">
+    
+    <Window.DataContext>
+        <vm:ClydeWinViewModel/>
+    </Window.DataContext>
+    
+    <Grid Background="{StaticResource PrimaryBackgroundColor}">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30px"/>
+            <RowDefinition Height="80px"/>
+            <RowDefinition Height="190px"/>
+            <RowDefinition Height="30px"/>
+            <RowDefinition Height="40px"/>
+            <RowDefinition Height="80px"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- Currently disabled -->
+        <Border
+            Height="30" Width="300"
+            VerticalAlignment="Top"
+            HorizontalAlignment="Center"
+            Visibility="Collapsed"
+            Background="{StaticResource SecondaryBackgroundColor}"
+            Grid.Row="0">
+            <TextBlock FontSize="20"
+                       FontWeight="Black"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Top"
+                       Text="{x:Static text:Language.Update}"
+                       Height="30"
+                       Margin="0,3,0,0"
+                       Foreground="{StaticResource PrimaryTextColor}"/>
+        </Border>
+
+        <Border
+            Height="80" Width="300"
+            VerticalAlignment="Top"
+            HorizontalAlignment="Center"
+            Grid.Row="1">
+            <TextBlock FontSize="70"
+                       FontWeight="Black"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Top"
+                       Height="78"
+                       Foreground="{StaticResource PrimaryTextColor}"
+                       Text="{x:Static text:Language.ApplicationName}"/>
+        </Border>
+
+        <control:ClydeButton
+            Command="{Binding ButtonCommand}"
+            Grid.Row="2"
+            OuterEllipseColor="{StaticResource SecondaryButtonColor}"
+            InnerEllipseColor="{StaticResource PrimaryButtonColor}"
+            IconColor="{Binding IconColor}"/>
+
+        <Border
+            Height="30" Width="114"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            CornerRadius="20"
+            Background="{StaticResource SecondaryBackgroundColor}"
+            Grid.Row="3">
+            <TextBlock FontSize="13.59"
+                       FontWeight="Black"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"
+                       Text="{Binding StatusText}"
+                       Foreground="{StaticResource PrimaryTextColor}"/>
+        </Border>
+
+        <Border
+            Grid.Row="4"
+            Height="40">
+            <TextBlock FontSize="23.29"
+                       FontWeight="Black"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"
+                       Foreground="{StaticResource PrimaryTextColor}"
+                       Text="{Binding StatusTime}"/>
+        </Border>
+
+        <tb:TaskbarIcon
+            x:Name="sysTray"
+            IconSource="Clyde.ico"
+            TrayLeftMouseDoubleClick="Open"
+            ToolTipText="{x:Static text:Language.ApplicationName}">
+            <tb:TaskbarIcon.ContextMenu>
+                <ContextMenu Style="{StaticResource BetterContextMenu}" 
+                             Background="{StaticResource SysTrayBackgroundColor}"
+                             StaysOpen="True">
+                    <MenuItem
+                        Header="{x:Static text:Language.Start}"
+                        Command="{Binding StartCommand}"
+                        Foreground="{StaticResource SysTrayTextColor}"
+                        IsEnabled="{Binding CanStart}"/>
+                    <MenuItem
+                        Header="{x:Static text:Language.Stop}"
+                        Command="{Binding StopCommand}"
+                        Foreground="{StaticResource SysTrayTextColor}"
+                        IsEnabled="{Binding CanStop}"/>
+                    <Separator/>
+                    <MenuItem
+                        Header="{x:Static text:Language.Quit}"
+                        Click="Exit"
+                        Foreground="{StaticResource SysTrayTextColor}"/>
+                </ContextMenu>
+            </tb:TaskbarIcon.ContextMenu>
+        </tb:TaskbarIcon>
+        
+    </Grid>
+</Window>

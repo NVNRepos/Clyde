@@ -1,0 +1,21 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:res="clr-namespace:Clyde.App.Resources">
+
+    <!-- Text colors -->
+    <SolidColorBrush x:Key="PrimaryTextColor" Color="{x:Static res:ClydeColor.White}"/>
+    <SolidColorBrush x:Key="SecondaryTextColor" Color="{x:Static res:ClydeColor.Black}"/>
+    <SolidColorBrush x:Key="SysTrayTextColor" Color="{x:Static res:ClydeColor.Black}"/>
+
+    <!-- Background colors -->
+    <SolidColorBrush x:Key="PrimaryBackgroundColor" Color="{x:Static res:ClydeColor.Blue}"/>
+    <SolidColorBrush x:Key="SecondaryBackgroundColor" Color="{x:Static res:ClydeColor.LightBlue}"/>
+    <SolidColorBrush x:Key="SysTrayBackgroundColor" Color="{x:Static res:ClydeColor.LightBlue}"/>
+
+    <!-- Button colors -->
+    <SolidColorBrush x:Key="PrimaryButtonColor" Color="{x:Static res:ClydeColor.White}"/>
+    <SolidColorBrush x:Key="SecondaryButtonColor" Color="{x:Static res:ClydeColor.LightBlue}"/>
+    <SolidColorBrush x:Key="ButtonOnColor" Color="{x:Static res:ClydeColor.Green}"/>
+    <SolidColorBrush x:Key="ButtonOffColor" Color="{x:Static res:ClydeColor.Red}"/>
+    
+</ResourceDictionary>

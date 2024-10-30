@@ -1,0 +1,15 @@
+﻿<Application x:Class="Clyde.App.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:Clyde.App"
+             StartupUri="ClydeWindow.xaml">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <!-- Will be cleared during runtime. This is only here for the designer -->
+                <ResourceDictionary Source="Resources/Styles/Styles.xaml"/>
+                <ResourceDictionary Source="Resources/Themes/Light.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>
