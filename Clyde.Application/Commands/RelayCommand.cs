@@ -14,10 +14,10 @@ namespace Clyde.App.Commands
 
         #region ctor
 
-        internal RelayCommand(Action<object> execute, Func<object, bool> canExecute = null)
+        public RelayCommand(Action<object> execute, Func<object, bool> canExecute = null)
             => (_execute, _canExecute) = (execute ?? throw new ArgumentNullException(nameof(execute)), canExecute);
 
-        internal RelayCommand(Action execute) : this(param => execute()) { }
+        public RelayCommand(Action execute) : this(param => execute()) { }
 
         #endregion
 

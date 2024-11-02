@@ -42,18 +42,18 @@ namespace Clyde.App.ViewModels
 
         #region Overrides
 
-        protected override void UpdateUIOnStart()
+        protected override void UpdateUIOnIdle()
         {
             IconColor = (Brush)Application.Current.FindResource(ClydeResourceKey.Color.BUTTON_ON);
             StatusText = Language.Idle;
-            base.UpdateUIOnStart();
+            base.UpdateUIOnIdle();
         }
 
-        protected override void UpdateUIOnStop()
+        protected override void UpdateUIOnRunning()
         {
             IconColor = (Brush)Application.Current.FindResource(ClydeResourceKey.Color.BUTTON_OFF);
             StatusText = Language.Running;
-            base.UpdateUIOnStop();
+            base.UpdateUIOnRunning();
         }
 
         #endregion

@@ -100,7 +100,7 @@ namespace Clyde.Domain
 
         #region IDisposable
 
-        public void Dispose()
+        public virtual void Dispose()
         {
             Stop();
             _watch?.Reset();

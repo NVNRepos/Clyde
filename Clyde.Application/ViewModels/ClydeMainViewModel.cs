@@ -112,15 +112,21 @@ namespace Clyde.App.ViewModels
             CanStop = _stateHolder.CanStop();
             switch (_stateHolder.State)
             {
-                case ExecutionState.Idle: UpdateUIOnStart(); break;
-                case ExecutionState.Running: UpdateUIOnStop(); break;
+                case ExecutionState.Idle: UpdateUIOnIdle(); break;
+                case ExecutionState.Running: UpdateUIOnRunning(); break;
                 default: break;
             }
         }
 
-        protected virtual void UpdateUIOnStart() { }
+        /// <summary>
+        /// Action on <see cref="IStateHolder.State"/> == <see cref="ExecutionState.Idle"/>
+        /// </summary>
+        protected virtual void UpdateUIOnIdle() { }
 
-        protected virtual void UpdateUIOnStop() { }
+        /// <summary>
+        /// Action on <see cref="IStateHolder.State"/> == <see cref="ExecutionState.Running"/>
+        /// </summary>
+        protected virtual void UpdateUIOnRunning() { }
 
         #endregion
 

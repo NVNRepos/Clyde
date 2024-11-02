@@ -3,7 +3,7 @@ using System.Reflection;
 
 namespace Clyde.Globalization
 {
-    /// <summary> Key values for <see cref="ILanguageManager.GetCulturedString(GlobalizeString)"/> </summary>
+    /// <summary> Key values for <see cref="ILanguageManager.GetCulturedString(string)"/> </summary>
     public static class GlobalizeString
     {
         #region GlobalizeStringKey

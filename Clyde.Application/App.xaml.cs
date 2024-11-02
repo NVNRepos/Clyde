@@ -1,8 +1,7 @@
-﻿using Clyde.Domain;
-using System;
+﻿using System;
 using System.Threading;
 using System.Windows;
-using System.Windows.Interop;
+using Clyde.Domain;
 
 namespace Clyde.App
 {

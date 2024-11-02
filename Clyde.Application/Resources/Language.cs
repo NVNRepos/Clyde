@@ -20,7 +20,7 @@ namespace Clyde.App.Resources
         /// Sets a specified <see cref="ILanguageManager"/>
         /// </summary>
         /// <param name="languageManager">The implementation</param>
-        /// <param name="override">Override the currently used on</param>
+        /// <param name="override">Override the currently used one </param>
         public static void SetLanguageManager(ILanguageManager languageManager, bool @override = false)
         {
             if (@override)
