@@ -1,7 +1,13 @@
 ﻿namespace Clyde.App.Resources
 {
+    /// <summary>
+    /// All application resourcekeys for <see cref="System.Windows.FrameworkElement.FindResource(object)"/>
+    /// </summary>
     public static class ClydeResourceKey
     {
+        /// <summary>
+        /// Color keys
+        /// </summary>
         public static class Color
         {
             #region Keys 
@@ -22,11 +28,14 @@
             #endregion
         }
 
+        /// <summary>
+        /// Style keys
+        /// </summary>
         public static class Style
         {
             #region Keys
 
-            public const string CONEXT_MENU = "BetterContextMenu";
+            public const string CONTEXT_MENU = "BetterContextMenu";
 
             #endregion
         }

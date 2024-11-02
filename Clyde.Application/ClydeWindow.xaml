@@ -5,20 +5,22 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Clyde.App"
         xmlns:control="clr-namespace:Clyde.App.Controls"
-        xmlns:text="clr-namespace:Clyde.App.Resources"
+        xmlns:res="clr-namespace:Clyde.App.Resources"
         xmlns:vm="clr-namespace:Clyde.App.ViewModels"
         xmlns:tb="clr-namespace:H.NotifyIcon;assembly=H.NotifyIcon.Wpf"
         mc:Ignorable="d"
         Loaded="OnLoad"
         Height="450" Width="300"
         MaxHeight="450" MaxWidth="300"
-        Title="{x:Static text:Language.ApplicationName}">
+        Title="{x:Static res:Language.ApplicationName}">
     
     <Window.DataContext>
         <vm:ClydeWinViewModel/>
     </Window.DataContext>
     
-    <Grid Background="{StaticResource PrimaryBackgroundColor}">
+    <!-- ClydeResourceKeys are found in Resources/ClydeResourceKey.cs -->
+    <!-- How to access a ClydeResourceKey: res:ClydeResourceKey+Subclass.Constant -->
+    <Grid Background="{StaticResource ResourceKey={x:Static res:ClydeResourceKey+Color.PRIMARY_BACKGROUND}}">
 
         <Grid.RowDefinitions>
             <RowDefinition Height="30px"/>
@@ -39,16 +41,16 @@
             VerticalAlignment="Top"
             HorizontalAlignment="Center"
             Visibility="Collapsed"
-            Background="{StaticResource SecondaryBackgroundColor}"
+            Background="{StaticResource ResourceKey={x:Static res:ClydeResourceKey+Color.SECONDARY_BACKGROUND}}"
             Grid.Row="0">
             <TextBlock FontSize="20"
                        FontWeight="Black"
                        HorizontalAlignment="Center"
                        VerticalAlignment="Top"
-                       Text="{x:Static text:Language.Update}"
+                       Text="{x:Static res:Language.Update}"
                        Height="30"
                        Margin="0,3,0,0"
-                       Foreground="{StaticResource PrimaryTextColor}"/>
+                       Foreground="{StaticResource ResourceKey={x:Static res:ClydeResourceKey+Color.PRIMARY_TEXT}}"/>
         </Border>
 
         <Border
@@ -61,15 +63,15 @@
                        HorizontalAlignment="Center"
                        VerticalAlignment="Top"
                        Height="78"
-                       Foreground="{StaticResource PrimaryTextColor}"
-                       Text="{x:Static text:Language.ApplicationName}"/>
+                       Foreground="{StaticResource ResourceKey={x:Static res:ClydeResourceKey+Color.PRIMARY_TEXT}}"
+                       Text="{x:Static res:Language.ApplicationName}"/>
         </Border>
 
         <control:ClydeButton
             Command="{Binding ButtonCommand}"
             Grid.Row="2"
-            OuterEllipseColor="{StaticResource SecondaryButtonColor}"
-            InnerEllipseColor="{StaticResource PrimaryButtonColor}"
+            OuterEllipseColor="{StaticResource ResourceKey={x:Static res:ClydeResourceKey+Color.SECONDARY_BUTTON}}"
+            InnerEllipseColor="{StaticResource ResourceKey={x:Static res:ClydeResourceKey+Color.PRIMARY_BUTTON}}"
             IconColor="{Binding IconColor}"/>
 
         <Border
@@ -77,14 +79,14 @@
             HorizontalAlignment="Center"
             VerticalAlignment="Center"
             CornerRadius="20"
-            Background="{StaticResource SecondaryBackgroundColor}"
+            Background="{StaticResource ResourceKey={x:Static res:ClydeResourceKey+Color.SECONDARY_BACKGROUND}}"
             Grid.Row="3">
             <TextBlock FontSize="13.59"
                        FontWeight="Black"
                        HorizontalAlignment="Center"
                        VerticalAlignment="Center"
                        Text="{Binding StatusText}"
-                       Foreground="{StaticResource PrimaryTextColor}"/>
+                       Foreground="{StaticResource ResourceKey={x:Static res:ClydeResourceKey+Color.PRIMARY_TEXT}}"/>
         </Border>
 
         <Border
@@ -94,7 +96,7 @@
                        FontWeight="Black"
                        HorizontalAlignment="Center"
                        VerticalAlignment="Center"
-                       Foreground="{StaticResource PrimaryTextColor}"
+                       Foreground="{StaticResource ResourceKey={x:Static res:ClydeResourceKey+Color.PRIMARY_TEXT}}"
                        Text="{Binding StatusTime}"/>
         </Border>
 
@@ -102,26 +104,26 @@
             x:Name="sysTray"
             IconSource="Clyde.ico"
             TrayLeftMouseDoubleClick="Open"
-            ToolTipText="{x:Static text:Language.ApplicationName}">
+            ToolTipText="{x:Static res:Language.ApplicationName}">
             <tb:TaskbarIcon.ContextMenu>
-                <ContextMenu Style="{StaticResource BetterContextMenu}" 
-                             Background="{StaticResource SysTrayBackgroundColor}"
+                <ContextMenu Style="{StaticResource ResourceKey={x:Static res:ClydeResourceKey+Style.CONTEXT_MENU}}" 
+                             Background="{StaticResource ResourceKey={x:Static res:ClydeResourceKey+Color.SYSTRAY_BACKGROUND}}"
                              StaysOpen="True">
                     <MenuItem
-                        Header="{x:Static text:Language.Start}"
+                        Header="{x:Static res:Language.Start}"
                         Command="{Binding StartCommand}"
-                        Foreground="{StaticResource SysTrayTextColor}"
+                        Foreground="{StaticResource ResourceKey={x:Static res:ClydeResourceKey+Color.SYSTRAY_TEXT}}"
                         IsEnabled="{Binding CanStart}"/>
                     <MenuItem
-                        Header="{x:Static text:Language.Stop}"
+                        Header="{x:Static res:Language.Stop}"
                         Command="{Binding StopCommand}"
-                        Foreground="{StaticResource SysTrayTextColor}"
+                        Foreground="{StaticResource ResourceKey={x:Static res:ClydeResourceKey+Color.SYSTRAY_TEXT}}"
                         IsEnabled="{Binding CanStop}"/>
                     <Separator/>
                     <MenuItem
-                        Header="{x:Static text:Language.Quit}"
+                        Header="{x:Static res:Language.Quit}"
                         Click="Exit"
-                        Foreground="{StaticResource SysTrayTextColor}"/>
+                        Foreground="{StaticResource ResourceKey={x:Static res:ClydeResourceKey+Color.SYSTRAY_TEXT}}"/>
                 </ContextMenu>
             </tb:TaskbarIcon.ContextMenu>
         </tb:TaskbarIcon>
