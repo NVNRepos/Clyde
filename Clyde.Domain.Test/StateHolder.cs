@@ -47,11 +47,5 @@ namespace Clyde.Domain.Test
             Assert.IsFalse(_stateHolder.Stop());
             Assert.AreEqual(ExecutionState.Disposed, _stateHolder.State);
         }
-
-
-        class StateHolderBehavoirDummy : StateHolderBase
-        {
-            protected override void OnTimerElapsed(object state) { }
-        }
     }
 }

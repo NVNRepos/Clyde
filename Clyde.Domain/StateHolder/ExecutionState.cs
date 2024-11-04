@@ -1,7 +1,7 @@
 ﻿namespace Clyde.Domain
 {
     /// <summary>
-    /// This enum displays an executions state of an object
+    /// This enum displays an executions state of a <see cref="IStateHolder"/>
     /// </summary>
     public enum ExecutionState
     {

@@ -13,17 +13,17 @@ namespace Clyde.App.Domain
             SimulateKeyPress();
         }
 
-        private static void SetWinState(Win32Facade.WinExecutionState winState)
-            => Win32Facade.SetThreadExecutionState(winState);
-
         private static void PreventSleep()
-            => SetWinState(
+            => Win32Facade.SetThreadExecutionState(
                 Win32Facade.WinExecutionState.Continuous |
                 Win32Facade.WinExecutionState.System_Required |
                 Win32Facade.WinExecutionState.Display_Required);
 
         protected override void AfterStop()
-            => SetWinState(Win32Facade.WinExecutionState.Continuous);
+        {
+            Win32Facade.SetThreadExecutionState(Win32Facade.WinExecutionState.Continuous);
+            base.AfterStop();
+        }
 
         private static void SimulateKeyPress()
         {

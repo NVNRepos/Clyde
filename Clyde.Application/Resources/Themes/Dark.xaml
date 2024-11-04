@@ -3,19 +3,19 @@
                     xmlns:res="clr-namespace:Clyde.App.Resources">
     
     <!-- Text colors -->
-    <SolidColorBrush x:Key="{x:Static res:ClydeResourceKey+Color.PRIMARY_TEXT}" Color="{x:Static res:ClydeColor.White}"/>
-    <SolidColorBrush x:Key="{x:Static res:ClydeResourceKey+Color.SECONDARY_TEXT}" Color="{x:Static res:ClydeColor.Black}"/>
-    <SolidColorBrush x:Key="{x:Static res:ClydeResourceKey+Color.SYSTRAY_TEXT}" Color="{x:Static res:ClydeColor.White}"/>
+    <SolidColorBrush x:Key="{x:Static res:ClydeResourceKey+Color.PRIMARY_TEXT}" Color="#FFFFFF"/>
+    <SolidColorBrush x:Key="{x:Static res:ClydeResourceKey+Color.SECONDARY_TEXT}" Color="#000000"/>
+    <SolidColorBrush x:Key="{x:Static res:ClydeResourceKey+Color.SYSTRAY_TEXT}" Color="#FFFFFF"/>
 
     <!-- Background colors -->
-    <SolidColorBrush x:Key="{x:Static res:ClydeResourceKey+Color.PRIMARY_BACKGROUND}" Color="{x:Static res:ClydeColor.DarkBlue}"/>
-    <SolidColorBrush x:Key="{x:Static res:ClydeResourceKey+Color.SECONDARY_BACKGROUND}" Color="{x:Static res:ClydeColor.MediumBlue}"/>
-    <SolidColorBrush x:Key="{x:Static res:ClydeResourceKey+Color.SYSTRAY_BACKGROUND}" Color="{x:Static res:ClydeColor.DarkBlue}"/>
+    <SolidColorBrush x:Key="{x:Static res:ClydeResourceKey+Color.PRIMARY_BACKGROUND}" Color="#0A192E"/>
+    <SolidColorBrush x:Key="{x:Static res:ClydeResourceKey+Color.SECONDARY_BACKGROUND}" Color="#172B46"/>
+    <SolidColorBrush x:Key="{x:Static res:ClydeResourceKey+Color.SYSTRAY_BACKGROUND}" Color="#0A192E"/>
 
     <!-- Button colors -->
-    <SolidColorBrush x:Key="{x:Static res:ClydeResourceKey+Color.PRIMARY_BUTTON}" Color="{x:Static res:ClydeColor.DarkBlue}"/>
-    <SolidColorBrush x:Key="{x:Static res:ClydeResourceKey+Color.SECONDARY_BUTTON}" Color="{x:Static res:ClydeColor.MediumBlue}"/>
-    <SolidColorBrush x:Key="{x:Static res:ClydeResourceKey+Color.BUTTON_ON}" Color="{x:Static res:ClydeColor.Green}"/>
-    <SolidColorBrush x:Key="{x:Static res:ClydeResourceKey+Color.BUTTON_OFF}" Color="{x:Static res:ClydeColor.Red}"/>
+    <SolidColorBrush x:Key="{x:Static res:ClydeResourceKey+Color.PRIMARY_BUTTON}" Color="#0A192E"/>
+    <SolidColorBrush x:Key="{x:Static res:ClydeResourceKey+Color.SECONDARY_BUTTON}" Color="#172B46"/>
+    <SolidColorBrush x:Key="{x:Static res:ClydeResourceKey+Color.BUTTON_ON}" Color="#34A62E"/>
+    <SolidColorBrush x:Key="{x:Static res:ClydeResourceKey+Color.BUTTON_OFF}" Color="#A62E2E"/>
     
 </ResourceDictionary>

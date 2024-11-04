@@ -4,23 +4,14 @@ using System;
 namespace Clyde.Domain
 {
     /// <summary>
-    /// Base class for <see cref="IStateHolder"/> implementations.
+    /// Base class for timer based <see cref="IStateHolder"/> implementations.
     /// </summary>
     public abstract class StateHolderBase : IStateHolder
     {
-        #region Constants
-
-        /// <summary>
-        /// Period for the internal timer
-        /// </summary>
-        public const int PERIOD = 60000; // One minute
-
-        #endregion
-
         #region Fields
 
-        private Timer _timer = null;
-        private System.Diagnostics.Stopwatch _watch = new System.Diagnostics.Stopwatch();
+        private readonly Timer _timer = null;
+        private readonly System.Diagnostics.Stopwatch _watch;
 
         #endregion
 
@@ -30,12 +21,22 @@ namespace Clyde.Domain
 
         public TimeSpan Duration => _watch.Elapsed;
 
+        /// <summary>
+        /// Period for the internal timer
+        /// <para>When override do not use negative integers or zero</para>
+        /// </summary>
+        protected virtual int Period => 60000; // One minute
+
         #endregion
 
         #region ctor
 
         protected StateHolderBase()
-            => State = ExecutionState.Idle;
+        {
+            State = ExecutionState.Idle;
+            _timer = new Timer(OnTimerElapsed, this, Timeout.Infinite, Period);
+            _watch = new System.Diagnostics.Stopwatch();
+        }
 
         #endregion
 
@@ -47,7 +48,8 @@ namespace Clyde.Domain
                 return false;
 
             BeforeStart();
-            _timer = new Timer(OnTimerElapsed, this, 0, PERIOD);
+
+            _timer.Change(0, Period);
             _watch.Start();
             State = ExecutionState.Running;
 
@@ -63,9 +65,7 @@ namespace Clyde.Domain
 
             BeforeStop();
 
-            _timer?.Change(Timeout.Infinite, 0);
-            _timer?.Dispose();
-            _timer = null;
+            _timer.Change(Timeout.Infinite, Period);
             _watch.Stop();
             State = ExecutionState.Idle;
 
@@ -79,9 +79,8 @@ namespace Clyde.Domain
         #region TimerEvent
 
         /// <summary>
-        /// Method will be called when <see cref="PERIOD"/> is elapsed
+        /// Method will be called when <see cref="Period"/> is elapsed
         /// </summary>
-        /// <param name="state"></param>
         protected abstract void OnTimerElapsed(object state);
 
         /// <summary> Action before <see cref="Start"/> </summary>
@@ -103,10 +102,8 @@ namespace Clyde.Domain
         public virtual void Dispose()
         {
             Stop();
-            _watch?.Reset();
-            _watch = null;
+            _timer?.Dispose();
             State = ExecutionState.Disposed;
-            GC.SuppressFinalize(this);
         }
 
         #endregion

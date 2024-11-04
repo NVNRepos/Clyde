@@ -235,10 +235,8 @@
       <DependentUpon>ClydeButton.xaml</DependentUpon>
     </Compile>
     <Compile Include="Domain\BasicWinStateHolder.cs" />
-    <Compile Include="Resources\ClydeColor.cs" />
     <Compile Include="Resources\Language.cs" />
     <Compile Include="Resources\ClydeResourceKey.cs" />
-    <Compile Include="ViewModels\ClydeMainViewModel.cs" />
     <Compile Include="ViewModels\ClydeWinViewModel.cs" />
     <Compile Include="Win32Facade.cs" />
     <Page Include="ClydeWindow.xaml">

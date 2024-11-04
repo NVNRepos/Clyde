@@ -118,6 +118,8 @@
   <ItemGroup>
     <Compile Include="StateHolder.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="StateHolderBehavoirDummy.cs" />
+    <Compile Include="ViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Clyde.Domain\Clyde.Domain.csproj">

@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Threading;
 using System.Windows;
-using Clyde.Domain;
 
 namespace Clyde.App
 {
@@ -15,7 +14,7 @@ namespace Clyde.App
 
         private static ApplicationTheme _theme;
 
-        private readonly Mutex _mutex = new Mutex(true, ClydeDomain.APPLICATION_NAME);
+        private readonly Mutex _mutex = new Mutex(true, Clyde.Domain.ClydeDomain.APPLICATION_NAME);
 
         #endregion
 
