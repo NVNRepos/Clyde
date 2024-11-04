@@ -2,7 +2,7 @@
 
 namespace Clyde.Domain.Test
 {
-    internal class StateHolderBehavoirDummy : StateHolderBase
+    internal class StateHolderBehaviorDummy : StateHolderBase
     {
         protected override void OnTimerElapsed(object state) { }
     }

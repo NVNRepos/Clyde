@@ -9,7 +9,7 @@ namespace Clyde.Domain.Test
 
         [TestInitialize]
         public void TestInitialize()
-            => _stateHolder = new StateHolderBehavoirDummy();
+            => _stateHolder = new StateHolderBehaviorDummy();
 
         [TestMethod]
         public void Start()

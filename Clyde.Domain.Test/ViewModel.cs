@@ -10,7 +10,7 @@ namespace Clyde.Domain.Test
         [TestInitialize]
         public void Initialize()
         {
-            viewModel = new ClydeViewModelBase(new StateHolderBehavoirDummy());
+            viewModel = new ClydeViewModelBase(new StateHolderBehaviorDummy());
         }
 
         [TestMethod]
