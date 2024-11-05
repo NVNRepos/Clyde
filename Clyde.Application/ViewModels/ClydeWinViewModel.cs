@@ -66,11 +66,11 @@ namespace Clyde.App.ViewModels
             switch (state)
             {
                 case ExecutionState.Idle:
-                    IconColor = (Brush)Application.Current.FindResource(ClydeResourceKey.Color.BUTTON_ON);
+                    IconColor = (Brush)Application.Current.TryFindResource(ClydeResourceKey.Color.BUTTON_ON) ?? Brushes.Green;
                     StatusText = Language.Idle;
                     break;
                 case ExecutionState.Running:
-                    IconColor = (Brush)Application.Current.FindResource(ClydeResourceKey.Color.BUTTON_OFF);
+                    IconColor = (Brush)Application.Current.TryFindResource(ClydeResourceKey.Color.BUTTON_OFF) ?? Brushes.Red;
                     StatusText = Language.Running;
                     break;
                 default: break;

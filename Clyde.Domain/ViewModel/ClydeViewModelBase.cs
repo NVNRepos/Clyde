@@ -17,7 +17,7 @@ namespace Clyde.Domain
         private readonly Timer _timer;
 
         // Don't work with the backing fields unless you are in the ctor!
-        private string _statusTime;
+        private string _statusTime = TimeSpan.Zero.ToString(TIME_FORMAT);
         private bool _canStart = false;
         private bool _canStop = false;
 
@@ -59,22 +59,15 @@ namespace Clyde.Domain
             _stateHolder = stateHolder;
 
             //timer
-            _timer = new Timer(UpdateStatusTime, this, Timeout.Infinite, REFRESH_RATE); 
-            AdjustTimer();
+            _timer = new Timer(UpdateStatusTime, this,
+                _stateHolder.State == ExecutionState.Running ? 0 : Timeout.Infinite, REFRESH_RATE);
 
-            _statusTime = _stateHolder.Duration.ToString(TIME_FORMAT);
             SetProperties();
         }
 
         #endregion
 
         #region Methods
-
-        private void AdjustTimer()
-        {
-            if (_stateHolder.State == ExecutionState.Running)
-                _timer.Change(0, REFRESH_RATE);
-        }
 
         private void UpdateStatusTime(object state)
             => StatusTime = _stateHolder.Duration.ToString(TIME_FORMAT);
@@ -140,8 +133,8 @@ namespace Clyde.Domain
         {
             _stateHolder?.Dispose();
             _timer?.Change(Timeout.Infinite, 0);
-            _timer?.Dispose();
             SetProperties();
+            _timer?.Dispose();
         }
 
         #endregion

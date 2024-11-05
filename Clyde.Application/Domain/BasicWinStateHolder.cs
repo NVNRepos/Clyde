@@ -1,12 +1,10 @@
 ﻿using Clyde.Domain;
+using static Clyde.App.Win32Facade;
 
 namespace Clyde.App.Domain
 {
     public class BasicWinStateHolder : StateHolderBase
     {
-
-        public BasicWinStateHolder() : base() { }
-
         protected override void OnTimerElapsed(object state)
         {
             PreventSleep();
@@ -14,21 +12,21 @@ namespace Clyde.App.Domain
         }
 
         private static void PreventSleep()
-            => Win32Facade.SetThreadExecutionState(
-                Win32Facade.WinExecutionState.Continuous |
-                Win32Facade.WinExecutionState.System_Required |
-                Win32Facade.WinExecutionState.Display_Required);
+            => SetThreadExecutionState(
+                WinExecutionState.Continuous |
+                WinExecutionState.System_Required |
+                WinExecutionState.Display_Required);
 
         protected override void AfterStop()
         {
-            Win32Facade.SetThreadExecutionState(Win32Facade.WinExecutionState.Continuous);
+            SetThreadExecutionState(WinExecutionState.Continuous);
             base.AfterStop();
         }
 
         private static void SimulateKeyPress()
         {
-            Win32Facade.KeyboardEvent(Win32Facade.VirtualKey.Shift, Win32Facade.KeyEvent.KeyDown);
-            Win32Facade.KeyboardEvent(Win32Facade.VirtualKey.Shift, Win32Facade.KeyEvent.KeyUp);
+            KeyboardEvent(VirtualKey.Shift, KeyEvent.KeyDown);
+            KeyboardEvent(VirtualKey.Shift, KeyEvent.KeyUp);
         }
 
     }

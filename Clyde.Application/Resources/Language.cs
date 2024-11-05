@@ -58,7 +58,7 @@ namespace Clyde.App.Resources
         #endregion
 
         #region ApplicationStrings
-        //importent strings for the application UI
+        //important strings for the application UI
 
         public static string ApplicationName
             => ClydeDomain.APPLICATION_NAME;
@@ -70,7 +70,7 @@ namespace Clyde.App.Resources
             => LanguageManager.GetCulturedString(GlobalizeString.STOP);
 
         public static string Quit
-        => LanguageManager.GetCulturedString(GlobalizeString.QUIT);
+            => LanguageManager.GetCulturedString(GlobalizeString.QUIT);
 
         public static string Running
             => LanguageManager.GetCulturedString(GlobalizeString.RUNNING);

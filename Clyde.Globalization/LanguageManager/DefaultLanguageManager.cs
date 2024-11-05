@@ -25,15 +25,15 @@ namespace Clyde.Globalization
 
         public string GetCulturedString(string key)
         {
-            string result = Properties.Resource.ResourceManager.GetString($"{key ?? string.Empty}", _cultureInfo);
+            string result = Properties.Resource.ResourceManager.GetString(key ?? string.Empty, _cultureInfo);
             if (string.IsNullOrEmpty(result))
                 return ClydeGlobalization.NOT_TRANSLATED;
             return result;
         }
 
-        private void SetCulture(CultureInfo culture)
+        private void SetCulture(CultureInfo cultureInfo)
         {
-            _cultureInfo = culture;
+            _cultureInfo = cultureInfo;
             Thread.CurrentThread.CurrentCulture = _cultureInfo;
             Thread.CurrentThread.CurrentUICulture = _cultureInfo;
         }

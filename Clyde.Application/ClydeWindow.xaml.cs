@@ -4,9 +4,6 @@ using System.Windows.Interop;
 
 namespace Clyde.App
 {
-    /// <summary>
-    /// Interaktionslogik für MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window
     {
         public MainWindow()
@@ -27,13 +24,17 @@ namespace Clyde.App
                 e.Cancel = true;
                 Hide();
             }
+            else
+            {
+                sysTray?.Dispose(); //this needs to be here for cleanup
+            }
             base.OnClosing(e);
         }
 
         private void Exit(object sender, EventArgs e)
         {
-            sysTray?.Dispose();
-            Application.Current.Shutdown();
+            Hide();
+            Close();
         }
 
         private void Open(object sender, EventArgs e)

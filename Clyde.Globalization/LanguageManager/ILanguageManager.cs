@@ -14,7 +14,8 @@
         /// Gets a localized <see cref="string"/> from the resources
         /// </summary>
         /// <param name="key">Key of the resource</param>
-        /// <returns>The localized version of the <see cref="string"/> if found else <see cref="ClydeGlobalization.NOT_TRANSLATED"/></returns>
+        /// <returns>The localized version of the <see cref="string"/> if found else the fallback(<see cref="ClydeCulture.English"/>) 
+        /// or <see cref="ClydeGlobalization.NOT_TRANSLATED"/> if fallback not found</returns>
         string GetCulturedString(string key);
     }
 }

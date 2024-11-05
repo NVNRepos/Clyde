@@ -4,12 +4,8 @@ using System.Windows;
 
 namespace Clyde.App
 {
-    /// <summary>
-    /// Interaktionslogik für "App.xaml"
-    /// </summary>
     public partial class App : Application
     {
-
         #region Fields
 
         private static ApplicationTheme _theme;
