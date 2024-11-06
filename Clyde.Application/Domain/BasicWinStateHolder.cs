@@ -5,26 +5,9 @@ namespace Clyde.App.Domain
 {
     public class BasicWinStateHolder : StateHolderBase
     {
-        protected override void OnTimerElapsed(object state)
+        protected override void OnTimerElapsed(object _)
         {
-            PreventSleep();
-            SimulateKeyPress();
-        }
-
-        private static void PreventSleep()
-            => SetThreadExecutionState(
-                WinExecutionState.Continuous |
-                WinExecutionState.System_Required |
-                WinExecutionState.Display_Required);
-
-        protected override void AfterStop()
-        {
-            SetThreadExecutionState(WinExecutionState.Continuous);
-            base.AfterStop();
-        }
-
-        private static void SimulateKeyPress()
-        {
+            // Simulate key event
             KeyboardEvent(VirtualKey.Shift, KeyEvent.KeyDown);
             KeyboardEvent(VirtualKey.Shift, KeyEvent.KeyUp);
         }

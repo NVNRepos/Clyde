@@ -29,7 +29,7 @@ namespace Clyde.App
             if(!IsFirstInstance)
                 Shutdown();
 
-            _theme = Win32Facade.SystemTheme();
+            _theme = Win32Facade.GetSystemTheme();
 #if DEBUG
             Clyde.App.Resources.Language.Culture = Globalization.ClydeCulture.English;
             _theme = ApplicationTheme.Light;

@@ -22,8 +22,8 @@ namespace Clyde.Domain
         public TimeSpan Duration => _watch.Elapsed;
 
         /// <summary>
-        /// Period for the internal timer
-        /// <para>When override do not use negative integers or zero</para>
+        /// Period for the internal timer. Default will be one minute (60000)
+        /// <para>When override do NOT use negative integers or zero</para>
         /// </summary>
         protected virtual int Period => 60000; // One minute
 
@@ -34,7 +34,7 @@ namespace Clyde.Domain
         protected StateHolderBase()
         {
             State = ExecutionState.Idle;
-            _timer = new Timer(OnTimerElapsed, this, Timeout.Infinite, Period);
+            _timer = new Timer(OnTimerElapsed, null, Timeout.Infinite, Period);
             _watch = new System.Diagnostics.Stopwatch();
         }
 
@@ -81,6 +81,7 @@ namespace Clyde.Domain
         /// <summary>
         /// Method will be called when <see cref="Period"/> is elapsed
         /// </summary>
+        /// <param name="state"> Will be <see langword="null"/> cuz its irrelevant </param>
         protected abstract void OnTimerElapsed(object state);
 
         /// <summary> Action before <see cref="Start"/> </summary>

@@ -9,9 +9,8 @@ namespace Clyde.App
     {
         #region Constants
 
-        private const string KERNEL = "kernel32.dll";
-        private const string DWMAPI = "dwmapi.dll";
         private const string USER = "user32.dll";
+        private const string DWMAPI = "dwmapi.dll";
 
         private const string REG_COLOR_SETTINGS = @"HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize";
         private const string APPS_USES_LIGHT_THEME = "AppsUseLightTheme";
@@ -241,25 +240,6 @@ namespace Clyde.App
 
         #endregion
 
-        #region WinExecutionState
-
-        /// <summary>
-        /// Windows executionsstate
-        /// </summary>
-        public enum WinExecutionState : uint
-        {
-            /// <summary> No sleepmode or standby </summary>
-            System_Required = 0x00000001,
-            /// <summary> Display always on </summary>
-            Display_Required = 0x00000002,
-            /// <summary> energy saving mode </summary>
-            Anymode_Required = 0x00000040,
-            /// <summary> State will be maintained </summary>
-            Continuous = 0x80000000
-        }
-
-        #endregion
-
         #region KeyEvents
 
         /// <summary>
@@ -283,9 +263,6 @@ namespace Clyde.App
 
         #region DllImports
 
-        [DllImport(KERNEL, SetLastError = true)]
-        private static extern uint SetThreadExecutionState(uint esFlag);
-
         [DllImport(USER, SetLastError = true)]
         private static extern void keybd_event(byte bVk, byte bScan, uint dwFlags, UIntPtr dwExtraInfo);
 
@@ -300,7 +277,7 @@ namespace Clyde.App
         /// Currently used system settings for themes (Light/Dark)
         /// </summary>
         /// <returns></returns>
-        public static ApplicationTheme SystemTheme()
+        public static ApplicationTheme GetSystemTheme()
         {
             try
             {
@@ -320,8 +297,8 @@ namespace Clyde.App
         /// <summary>
         /// Sets the non client area (titlebar) color of a handle (handle should be a Window)
         /// </summary>
-        /// <param name="handle"></param>
-        /// <param name="theme"></param>
+        /// <param name="handle"> The window handle </param>
+        /// <param name="theme"> Requested application theme </param>
         public static void SetTitlebarColor(IntPtr handle, ApplicationTheme theme)
         {
             uint usedtheme = (uint)theme;
@@ -335,14 +312,6 @@ namespace Clyde.App
         /// <param name="event">Event that should be used</param>
         public static void KeyboardEvent(VirtualKey key, KeyEvent @event)
             => keybd_event((byte)key, 0, (uint)@event, UIntPtr.Zero);
-
-        /// <summary>
-        /// Sets the Windows Exceution state
-        /// </summary>
-        /// <param name="state">State that should be used</param>
-        /// <returns>The current State (if changed it should be the same a requested)</returns>
-        public static WinExecutionState SetThreadExecutionState(WinExecutionState state)
-            => (WinExecutionState)SetThreadExecutionState((uint)state);
 
         #endregion
     }
